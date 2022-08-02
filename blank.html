@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+    
+   let playerScore = 0;
+   let cpuScore = 0;
+
+    
+    function playGame() {
+        
+      
+
+        function getComputerChoice() {
+            let choices = [ 
+                "rock",
+                "paper",
+                "scissors"
+            ]
+            
+            var answerCPU = choices[Math.floor(Math.random()*choices.length)];
+            
+            return answerCPU
+            
+            
+            
+            
+            
+            };
+            
+        function getPlayerChoice() {
+            var answerplayer = prompt("Rock, Paper, or Scissors?")
+            answerplayer.toLocaleLowerCase()
+            return answerplayer
+            
+            
+            };
+        
+     
+
+         
+        function judgeRound() {
+            let player = getPlayerChoice();
+            let cpu = getComputerChoice();
+
+            console.log(player)
+            console.log(cpu)
+            if (player === cpu) {
+                return draw    
+            } else if ( player === "paper" && cpu === "rock") {
+                return playerWinRound();
+            } else if ( player === "paper" && cpu === "scissors") {
+              return cpuWinRound();
+            } else if ( player === "rock" && cpu === "paper") {
+                return cpuWinRound();
+            } else if ( player === "rock" && cpu === "scissors") {
+              return playerWinRound();
+            } else if ( player === "scissors" && cpu === "paper") {
+              return playerWinRound();
+            } else {
+              return cpuWinRound();
+            } 
+            }  
+        
+        function playerWinRound() {
+          playerScore++ ;
+          return "you win!";
+
+        }; 
+        function cpuWinRound() {
+          cpuScore++;
+          return "you lose!";
+        
+        };
+
+        let draw = "draw!"
+        
+      judgeRound()
+        
+      
+     
+     // console.log(judgeRound())
+    
+    
+    
+    
+        
+  
+    
+          
+            
+    }
+
+    
+    function tourney() {
+       
+        for (var i = 0; i < 5; i++) {
+        playGame(),
+        console.log(playerScore),
+        console.log(cpuScore);}
+        
+        if (i = 5) {function operation() {
+          
+            if ( playerScore < cpuScore ) {
+              return "your score: " + playerScore +  "  cpu score: " + cpuScore + " ,YOU LOST THE TOURNAMENT!"
+            } else if (playerScore > cpuScore) {
+            return "your score: " + playerScore + "cpu score: " + cpuScore + " ,YOU WON THE TOURNAMENT!"
+          } else ( playerScore == cpuScore) 
+            return "IT'S A TIE!";
+          
+        }
+      }
+    
+        console.log(operation())
+        
+
+
+
+    }
+    
+  
+    
+    
+    
+   
+  
+    
+
+    
+    tourney()
+    
+    
+    
+    
+
+        
+    </script>
+
+        
+</body>
+</html>
