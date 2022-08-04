@@ -1,0 +1,35 @@
+
+
+
+.parent-container {
+    display: flex;
+    flex-wrap: row nowrap;
+    height: 50px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.buttons-container{
+
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.button {
+    margin: 10px;
+    width: 150px;
+    height: 75px;
+}
+
+#result {
+    justify-self: center;
+    font-size: 50px;
+    
+}
+
+.choice-container {
+    display: flex;
+    justify-content: space-around;
+}

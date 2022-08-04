@@ -4,16 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
 
     <title>Document</title>
 </head>
 <body>
+  <div class="parent-container">
+
+    <h2 id="playerscore">Your Score: 0</h2>
+   
+    <h2 id="result"></h2>
+
+    <h2 id="cpuscore">Cpu Score: 0</h2>
+    
+    
+
+  </div>
+  <div class="buttons-container">
+    <button class="button" onclick="choseRock(); playGame(); ">Rock</button>
+    <button class="button" onclick="chosePaper(); playGame(); ">Paper</button>
+    <button class="button" onclick="choseScissors(); playGame(); ">Scissors</button>
+  </div>
+  <div class="choice-container">
+
+    <h2 id="playerChoice"></h2>
+    <h2 id="cpuChoice"></h2>
+
+
+  </div>
+  
+    
+
+    
     <script>
      
     
    let playerScore = 0;
    let cpuScore = 0;
+   let answerplayer = ""
+    
+    function choseRock(){
+      answerplayer = "rock"
+      document.getElementById("playerChoice").innerHTML = answerplayer;
+      return answerplayer
+    };
 
+    function choseScissors(){
+      answerplayer = "scissors"
+      document.getElementById("playerChoice").innerHTML = answerplayer;
+      return answerplayer
+    };
+
+    function chosePaper(){
+      answerplayer = "paper"
+      document.getElementById("playerChoice").innerHTML = answerplayer;
+      return answerplayer
+    };
+
+    
     
     function playGame() {
         
@@ -27,6 +76,7 @@
             ]
             
             var answerCPU = choices[Math.floor(Math.random()*choices.length)];
+            document.getElementById("cpuChoice").innerHTML = answerCPU;
             
             return answerCPU
             
@@ -36,34 +86,28 @@
             
             };
             
-        function getPlayerChoice() {
-            var answerplayer = prompt("Rock, Paper, or Scissors?")
-            answerplayer.toLocaleLowerCase()
-            return answerplayer
-            
-            
-            };
+        
         
      
 
          
         function judgeRound() {
-            let player = getPlayerChoice();
+            let player = answerplayer;
             let cpu = getComputerChoice();
 
-            console.log(player)
-            console.log(cpu)
+            
+            
             if (player === cpu) {
-                return draw    
-            } else if ( player === "paper" && cpu === "rock") {
+                return drawRound();   
+            } else if ( player == "paper" && cpu == "rock") {
                 return playerWinRound();
-            } else if ( player === "paper" && cpu === "scissors") {
+            } else if ( player == "paper" && cpu == "scissors") {
               return cpuWinRound();
-            } else if ( player === "rock" && cpu === "paper") {
+            } else if ( player == "rock" && cpu == "paper") {
                 return cpuWinRound();
-            } else if ( player === "rock" && cpu === "scissors") {
+            } else if ( player == "rock" && cpu == "scissors") {
               return playerWinRound();
-            } else if ( player === "scissors" && cpu === "paper") {
+            } else if ( player == "scissors" && cpu == "paper") {
               return playerWinRound();
             } else {
               return cpuWinRound();
@@ -72,23 +116,34 @@
         
         function playerWinRound() {
           playerScore++ ;
-          return "you win!";
+          document.getElementById("result").innerHTML = 'you win this round!'
+          document.getElementById("playerscore").innerHTML= "your score: " + playerScore;
+          
+          
 
         }; 
         function cpuWinRound() {
           cpuScore++;
-          return "you lose!";
+          document.getElementById("result").innerHTML = 'you lose this round!'
+          document.getElementById("cpuscore").innerHTML= "cpu score:  " + cpuScore;
+          
         
         };
 
-        let draw = "draw!"
+        function drawRound() {
+          document.getElementById("result").innerHTML = 'Draw!'
+        }
         
       judgeRound()
         
       
      
-     // console.log(judgeRound())
     
+      if (playerScore == 5) {
+            document.getElementById("result").innerHTML = "WOW YOU ARE THE RPS CHAMP!"
+          } else if (cpuScore === 5) {
+            document.getElementById("result").innerHTML = "SKYNET SHALL NOW RULE THE WORLD!"
+          }
     
     
     
@@ -96,48 +151,9 @@
   
     
           
-            
-    }
+       }
 
-    
-    function tourney() {
-       
-        for (var i = 0; i < 5; i++) {
-        playGame(),
-        console.log(playerScore),
-        console.log(cpuScore);}
-        
-        if (i = 5) {function operation() {
-          
-            if ( playerScore < cpuScore ) {
-              return "your score: " + playerScore +  "  cpu score: " + cpuScore + " ,YOU LOST THE TOURNAMENT!"
-            } else if (playerScore > cpuScore) {
-            return "your score: " + playerScore + "cpu score: " + cpuScore + " ,YOU WON THE TOURNAMENT!"
-          } else ( playerScore == cpuScore) 
-            return "IT'S A TIE!";
-          
-        }
-      }
-    
-        console.log(operation())
-        
-
-
-
-    }
-    
-  
-    
-    
-    
-   
-  
-    
-
-    
-    tourney()
-    
-    
+ 
     
     
 
@@ -146,4 +162,3 @@
 
         
 </body>
-</html>
